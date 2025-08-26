@@ -27,11 +27,14 @@ docker compose up -d                       # run multiple containers with docker
 
 | Command Template                    | Example                                  | Explanation |
 |-------------------------------------|------------------------------------------|-------------|
-| `docker images`                     | `docker images`                          | List all images stored locally |
+| `docker images` or `docker image ls`| `docker images`                          | List all images stored locally |
 | `docker pull <image>:<tag>`         | `docker pull nginx:latest`               | Download an image (default tag = latest) |
 | `docker rmi <image_id>`             | `docker rmi 1a2b3c4d5e6f`                | Remove an image from local system |
 | `docker build -t <name>:<tag> .`    | `docker build -t thaile/myapp:1.0 .`     | Build an image from a Dockerfile in current directory |
 | `docker push <name>:<tag>`          | `docker push thaile/myapp:1.0`           | Upload image to a registry (Docker Hub, AWS ECR, etc.) |
+| `docker rmi <repo>/<tag>:<tag>`     | `docker rmi thaile/hello-world:v1`       | Remove an image from local system |
+| `docker image prune`                | `docker image prune`                     | Remove dangling images (layers with `<none>` tag) |
+| `docker image prune -a`             | `docker image prune -a`                  | Remove all unused images (not just dangling ones) |
 
 ---
 
@@ -40,10 +43,12 @@ docker compose up -d                       # run multiple containers with docker
 | Command Template                          | Example                                         | Explanation |
 |-------------------------------------------|-------------------------------------------------|-------------|
 | `docker run <image>`                      | `docker run nginx`                              | Run container in the foreground |
+| `docker run <repo>/<image>`                | `docker run thaile/bash-hello:v1`               | Run the container in the foreground from the image thaile/bash-hello tagged as v1. |
 | `docker run -d <image>`                   | `docker run -d nginx`                           | Run container in background (detached) |
 | `docker run -it <image> /bin/bash`        | `docker run -it ubuntu /bin/bash`               | Run container with interactive shell access |
 | `docker run -p <host>:<container> <image>`| `docker run -p 5000:8080 nginx`                 | Map host port 5000 → container port 8080 |
 | `docker run -v <volume>:<path> <image>`   | `docker run -v myvolume:/data nginx`            | Attach a volume for persistent storage |
+| `docker run --rm --name bash-hello thaile/bash-hello:v1`   | `docker run --rm --name bash-hello thaile/bash-hello:v1`            | Run a container with a specific name and auto remove it after exit |
 
 ---
 
@@ -100,6 +105,3 @@ docker compose up -d                       # run multiple containers with docker
 | `--env` or `-e`      | **Set environment variable**                | `docker run -e NODE_ENV=prod nginx`  | Injects environment variables into the container. |
 | `--network`          | **Specify network**                        | `docker run --network=my-net nginx`  | Connects container to a user-defined Docker network. |
 | `--restart`          | **Restart policy**                         | `docker run --restart=always nginx`  | Defines when container should auto-restart (always, on-failure, unless-stopped). |
-
-
----
