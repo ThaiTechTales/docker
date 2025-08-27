@@ -10,3 +10,4 @@ NAME="${*:-Thai}"
 
 # Greet the user
 printf "👋 Hello, %s! This is a Dockerised Bash script.\n" "$NAME"
+

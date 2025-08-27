@@ -1,0 +1,10 @@
+# Keep images lean by excluding local artefacts
+.git
+.gitignore
+.DS_Store
+*.log
+*.tmp
+node_modules
+venv
+__pycache__/
+tests/              # exclude if no tests are run inside the image
