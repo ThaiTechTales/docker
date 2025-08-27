@@ -71,6 +71,16 @@ The main difference between containers and virtual machines is that VMs simulate
 | **Analogy**       | 📦 **Library** (stores many books).                                      | 📖 **A single book series** with different editions (tags).                 |
 | **Usage Example** | `docker pull registry.hub.docker.com/library/nginx:latest`               | `nginx:latest`, `nginx:1.25`, `nginx:alpine`                              |
 
+## 🚀 Structure of a Dockerfile
+
+| Instruction | Purpose                                                                 | Example                                      |
+|-------------|-------------------------------------------------------------------------|----------------------------------------------|
+| **FROM**    | Sets the parent/base image for your build. It’s the starting point for your image. | `FROM ubuntu:20.04`                          |
+| **RUN**     | Executes commands at build time inside the container environment. Used to install software or set up the environment. | `RUN apt-get update && apt-get install -y python3` |
+| **COPY**    | Copies files or directories from the host machine into the image. Can copy multiple files or directories. | `COPY . /app` → copy everything from current dir to `/app` <br> <br>`COPY requirements.txt /app/` → copy a single file to `/app`<br> <br>`COPY src/ /app/src/` → copy a whole directory to `/app/src/` |                             |
+| **WORKDIR** | Sets the working directory inside the container. Equivalent to running `cd` in a shell. | `WORKDIR /app`                               |
+| **CMD**     | Specifies the default command that runs when the container starts. Only one CMD is effective (the last one if multiple are present). | `CMD ["python3", "app.py"]`                  |
+
 ## 🚀 Best Practices
 
 - Keep Dockerfiles small and efficient by leveraging caching (install dependencies before copying code).
