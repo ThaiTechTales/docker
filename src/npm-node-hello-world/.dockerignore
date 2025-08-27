@@ -1,0 +1,41 @@
+# ── VCS
+.git
+.gitignore
+.github/
+
+# ── Node artefacts and logs
+node_modules
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# ── OS/editor cruft
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# ── Tests and coverage
+tests/
+coverage/
+*.test.*
+*.spec.*
+
+# ── Build output and caches
+dist/
+build/
+.tmp/
+.temp/
+.cache/
+
+# ── Environment files
+.env
+.env.*
+!.env.example
+
+# ── NPM auth (usually contains tokens) – exclude by default
+.npmrc
+
+# ── Misc
+*.tgz
